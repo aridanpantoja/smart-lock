@@ -1,3 +1,4 @@
+import { createAttempt } from '@/actions/attempt'
 import prisma from '@/lib/db'
 import { NextResponse } from 'next/server'
 
@@ -16,12 +17,15 @@ export async function POST(request: Request) {
     const user = await prisma.user.findUnique({ where: { nfcId: nfcId } })
 
     if (user) {
+      const attempt = await createAttempt(nfcId, true)
       return NextResponse.json({
         success: true,
         message: `Welcome, ${user.name}`,
+        attempt: attempt,
       })
     } else {
-      return NextResponse.json({ success: false })
+      const attempt = await createAttempt(nfcId, false)
+      return NextResponse.json({ success: false, attempt: attempt })
     }
   } catch (error) {
     console.error('Error in POST /validate:', error)

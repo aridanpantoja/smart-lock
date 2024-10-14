@@ -1,5 +1,6 @@
 'use client'
 
+import { Logo } from '@/components/logo'
 import { buttonVariants } from '@/components/shadcn-ui/button'
 import {
   Card,
@@ -20,8 +21,8 @@ export default function SignInPage() {
     <SignIn.Root>
       <SignIn.Step className="w-full max-w-none sm:max-w-96" name="start">
         <Card className="w-full">
-          <CardHeader className="items-center text-center">
-            <h1 className="text-2xl font-bold">Logar no GIALCA</h1>
+          <CardHeader className="flex items-center gap-4 text-center">
+            <Logo />
             <CardDescription>
               Bem-vindo novamente! Logue para continuar
             </CardDescription>

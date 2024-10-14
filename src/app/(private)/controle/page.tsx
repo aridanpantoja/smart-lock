@@ -1,3 +1,9 @@
+import { UsersTable } from '@/components/controle/users-table'
+
 export default function ControlPage() {
-  return <h1>ControlePage</h1>
+  return (
+    <>
+      <UsersTable />
+    </>
+  )
 }
